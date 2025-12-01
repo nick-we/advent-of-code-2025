@@ -18,42 +18,19 @@ func PasswordSolverPart2(input string) (int, error) {
 
 		switch dir {
 		case 'L':
-			ticks := num / 100
-			password += ticks
-
-			num %= 100
-			if num != 0 {
-				if currentNumber != 0 {
-					currentNumber -= num
-					if currentNumber < 0 {
-						currentNumber += 100
-						password++
-					} else if currentNumber == 0 {
-						password++
-					}
-				} else {
-					currentNumber -= num
-					if currentNumber < 0 {
-						currentNumber += 100
-					}
-				}
+			password += num / 100
+			rem := num % 100
+			if currentNumber > 0 && currentNumber-rem <= 0 {
+				password++
 			}
+			currentNumber = (currentNumber - rem + 100) % 100
 		case 'R':
-			ticks := num / 100
-			password += ticks
-
-			num %= 100
-			if num != 0 {
-				if currentNumber != 0 {
-					currentNumber += num
-					if currentNumber >= 100 {
-						currentNumber -= 100
-						password++
-					}
-				} else {
-					currentNumber += num
-				}
+			password += num / 100
+			rem := num % 100
+			if currentNumber+rem >= 100 {
+				password++
 			}
+			currentNumber = (currentNumber + rem) % 100
 		default:
 			return 0, fmt.Errorf("invalid direction: %c", dir)
 		}
