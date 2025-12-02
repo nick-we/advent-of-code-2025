@@ -3,14 +3,16 @@ package main
 import (
 	"fmt"
 
-	"github.com/nick-we/advent-of-code-2025/src/day01"
+	"github.com/nick-we/advent-of-code-2025/src/day02"
 )
 
 func main() {
-	password, err := day01.PasswordSolverPart2(day01.InputPart2)
+	sum, err := day02.SumOfInvalidIdsPart2(input)
 	if err != nil {
 		panic(err)
 	}
 
-	fmt.Printf("Password: %d\n", password)
+	fmt.Printf("Sum: %d\n", sum)
 }
+
+var input string = "6161588270-6161664791,128091420-128157776,306-494,510-1079,10977-20613,64552-123011,33-46,28076-52796,371150-418737,691122-766624,115-221,7426210-7504719,819350-954677,7713444-7877541,63622006-63661895,1370-1981,538116-596342,5371-8580,8850407-8965070,156363-325896,47-86,452615-473272,2012-4265,73181182-73335464,1102265-1119187,3343315615-3343342551,8388258268-8388317065,632952-689504,3-22,988344-1007943"
